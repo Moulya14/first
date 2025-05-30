@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form method="POST" action="/">
+            <!-- Dropdown for user type -->
+            <label for="user_type">Login As:</label>
+            <select name="user_type" id="user_type" required>
+                <option value="">-- Select --</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+            </select>
+
+            <br><br>
+
+            <!-- Username / ID -->
+            <label for="username">Username / ID:</label>
+            <input type="text" name="username" required>
+
+            <br><br>
+
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <br><br>
+
+            <!-- Error Message -->
+            {% if error_message %}
+                <p style="color:red;">{{ error_message }}</p>
+            {% endif %}
+
+            <button type="submit">Login</button>
+            <!-- Add this inside the <form> or below the login button -->
+<br><br>
+<p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+
+        </form>
+    </div>
+</body>
+</html>

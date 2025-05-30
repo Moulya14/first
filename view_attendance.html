@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Attendance</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Assigned Shifts / Attendance</h1>
+
+        {% if assignments %}
+            {% for employee, records in assignments.items() %}
+                <h3>{{ employee }}</h3>
+                <ul>
+                    {% for record in records %}
+                        <li>{{ record.date }} – {{ record.shift.type }} ({{ record.shift.start }} to {{ record.shift.end }})</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% else %}
+            <p>No shift assignments available.</p>
+        {% endif %}
+
+        <br><a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>
